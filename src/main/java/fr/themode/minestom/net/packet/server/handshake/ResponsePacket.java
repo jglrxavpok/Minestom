@@ -13,11 +13,15 @@ public class ResponsePacket implements ServerPacket {
             "    },\n" +
             "    \"players\": {\n" +
             "        \"max\": 100,\n" +
-            "        \"online\": 1,\n" +
+            "        \"online\": 2,\n" +
             "        \"sample\": [\n" +
             "            {\n" +
             "                \"name\": \"TheMode\",\n" +
             "                \"id\": \"4566e69f-c907-48ee-8d71-d7ba5aa00d20\"\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"name\": \"Adamaq01\",\n" +
+            "                \"id\": \"58ffa9d8-aee1-4587-8b79-41b754f6f238\"\n" +
             "            }\n" +
             "        ]\n" +
             "    },\t\n" +

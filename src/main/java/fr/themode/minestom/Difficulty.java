@@ -1,4 +1,4 @@
-package fr.themode.minestom.world;
+package fr.themode.minestom;
 
 public enum Difficulty {
 

@@ -1,8 +1,10 @@
 package fr.themode.minestom.utils;
 
 import fr.adamaq01.ozao.net.Buffer;
+import fr.themode.minestom.world.CustomBlock;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
 
 public class Utils {
 
@@ -61,7 +63,6 @@ public class Utils {
         return result;
     }
 
-    // ??
     public static int lengthVarInt(int value) {
         int i = 0;
         do {
@@ -104,8 +105,27 @@ public class Utils {
         return result;
     }
 
+    public static int lengthVarLong(long value) {
+        int i = 0;
+        do {
+            i++;
+            byte temp = (byte) (value & 0b01111111);
+            value >>>= 7;
+            if (value != 0) {
+                temp |= 0b10000000;
+            }
+        } while (value != 0);
+        return i;
+    }
+
     public static void writePosition(Buffer buffer, int x, int y, int z) {
         buffer.putLong(((x & 0x3FFFFFF) << 38) | ((y & 0xFFF) << 26) | (z & 0x3FFFFFF));
     }
 
+    public static void writeBlocks(Buffer buffer, CustomBlock[] blocks) {
+        buffer.putShort((short) blocks.length);
+        buffer.putByte((byte) 8); // Bits per entry
+        writeVarInt(buffer, blocks.length);
+        Arrays.stream(blocks).forEachOrdered(customBlock -> buffer.putLong(customBlock.getType()));
+    }
 }

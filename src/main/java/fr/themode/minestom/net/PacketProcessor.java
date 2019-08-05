@@ -58,6 +58,10 @@ public class PacketProcessor {
         switch (connectionState) {
             case PLAY:
                 Player player = connectionManager.getPlayer(playerConnection);
+                if (playPacketsHandler.getPacketClass(id) == null) {
+                    System.out.println("Packet not implemented !");
+                    return;
+                }
                 ClientPlayPacket playPacket = (ClientPlayPacket) playPacketsHandler.getPacketClass(id).getDeclaredConstructor().newInstance();
                 playPacket.read(buffer);
                 playPacket.process(player);
