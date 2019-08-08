@@ -1,4 +1,6 @@
 package fr.minestom.api.instance.block;
 
-public class Block {
+import fr.minestom.api.data.DataContainer;
+
+public interface Block extends DataContainer {
 }

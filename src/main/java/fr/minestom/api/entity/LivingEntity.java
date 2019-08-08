@@ -1,13 +1,13 @@
 package fr.minestom.api.entity;
 
-import fr.minestom.api.data.Data;
+import fr.minestom.api.data.DataContainer;
 import fr.minestom.api.entity.callback.EntityDamageCallback;
 import fr.minestom.api.entity.callback.EntityDeathCallback;
 import fr.minestom.api.entity.callback.EntityHitCallback;
 import fr.minestom.api.instance.Instance;
 import fr.minestom.api.utils.Location;
 
-public interface LivingEntity {
+public interface LivingEntity extends DataContainer {
 
     Instance getInstance();
 
@@ -16,10 +16,6 @@ public interface LivingEntity {
     Location getLocation();
 
     void setLocation(Location location);
-
-    Data getData();
-
-    void setData(Data data);
 
     // Callbacks
     void onDeathCallback(EntityDeathCallback deathCallback);

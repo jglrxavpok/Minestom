@@ -10,4 +10,6 @@ public abstract class DataType<T> {
 
     public abstract T decode(T value);
 
+    // TODO get object type class ?
+
 }
