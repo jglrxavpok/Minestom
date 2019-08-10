@@ -5,6 +5,7 @@ import java.util.Arrays;
 public enum CustomBiome {
 
     OCEAN(0),
+    PLAINS(1),
     VOID(127);
 
     private int id;

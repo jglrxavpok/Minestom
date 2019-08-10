@@ -31,7 +31,7 @@ public class LoginStartPacket implements ClientPreplayPacket {
         JoinGamePacket joinGamePacket = new JoinGamePacket();
         joinGamePacket.entityId = 32;
         joinGamePacket.gameMode = GameMode.CREATIVE;
-        joinGamePacket.dimension = Dimension.END;
+        joinGamePacket.dimension = Dimension.OVERWORLD;
         joinGamePacket.maxPlayers = 0;
         joinGamePacket.levelType = "default";
         joinGamePacket.reducedDebugInfo = false;
@@ -47,25 +47,25 @@ public class LoginStartPacket implements ClientPreplayPacket {
         CustomChunk customChunk = new CustomChunk(CustomBiome.VOID);
         for (int x = 0; x < 16; x++)
             for (int z = 0; z < 16; z++)
-                customChunk.setBlock(x, 4, z, new CustomBlock(2));
+                customChunk.setBlock(x, 4, z, new CustomBlock(1)); // Stone
 
-        for (int x = 0; x < 7; x++) {
-            for (int z = 0; z < 7; z++) {
+        for (int x = -5; x < 5; x++) {
+            for (int z = -5; z < 5; z++) {
                 Packet packet = ChunkPacketCreator.create(x, z, customChunk, 0, 15);
                 connection.getConnection().sendPacket(packet);
             }
         }
 
         SpawnPositionPacket spawnPositionPacket = new SpawnPositionPacket();
-        spawnPositionPacket.x = 50;
-        spawnPositionPacket.y = 5;
-        spawnPositionPacket.z = 50;
+        spawnPositionPacket.x = 0;
+        spawnPositionPacket.y = 18;
+        spawnPositionPacket.z = 0;
         connection.sendPacket(spawnPositionPacket);
 
         PlayerPositionAndLookPacket playerPositionAndLookPacket = new PlayerPositionAndLookPacket();
-        playerPositionAndLookPacket.x = 50;
-        playerPositionAndLookPacket.y = 5;
-        playerPositionAndLookPacket.z = 50;
+        playerPositionAndLookPacket.x = 2;
+        playerPositionAndLookPacket.y = 120;
+        playerPositionAndLookPacket.z = 6;
         playerPositionAndLookPacket.yaw = 0;
         playerPositionAndLookPacket.pitch = 0;
         playerPositionAndLookPacket.flags = 0;
