@@ -136,7 +136,7 @@ public class Utils {
                 }
             }
         }
-        long[] data = encodeBlocks(blocksData, 14);
+        long[] data = encodeBlocks(blocksData, bitsPerEntry);
         writeVarInt(buffer, data.length);
         for (int i = 0; i < data.length; i++) {
             buffer.putLong(data[i]);
