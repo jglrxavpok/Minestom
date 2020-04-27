@@ -26,20 +26,20 @@ public class DamageType implements DataContainer  {
         return identifier;
     }
 
-    public TextObject buildChatMessage(Player killed) {
-        return TextBuilder.of(killed.getUsername()+" was killed by damage of type "+identifier).build();
+    public static DamageType fromProjectile(Entity shooter, Entity projectile) {
+        return new EntityProjectileDamage(shooter, projectile);
     }
 
-    public TextObject buildDeathMessage() {
-        return TextBuilder.of("Killed by damage of type "+identifier).build();
+    public TextObject buildChatMessage(Player killed) {
+        return TextBuilder.of(killed.getUsername() + " was killed by damage of type " + identifier).build();
     }
 
     public static DamageType fromPlayer(Player player) {
         return new EntityDamage(player);
     }
 
-    public static DamageType fromProjectile(Entity shooter, Entity projectile) {
-        return new EntityProjectileDamage(shooter,  projectile);
+    public TextObject buildDeathMessage() {
+        return TextBuilder.of("Killed by damage of type " + identifier).build();
     }
 
     @Override
